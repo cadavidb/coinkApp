@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Loading } from 'src/app/modules/core/utils/modals.utils';
-import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./styles/login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
   form: FormGroup;
   hide: boolean = true;
   loading:boolean=false;
@@ -18,11 +17,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-
-  ngOnInit(): void {
-
-  }
-
   login() {
     this.loading=true;
     setTimeout(() => {
