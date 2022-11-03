@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { RoutingAuthModule } from './routing/routing-auth-routing.module';
+import { LoginInputComponent } from './components/login-input/login-input.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    LoginInputComponent
   ],
   imports: [
     CommonModule,
