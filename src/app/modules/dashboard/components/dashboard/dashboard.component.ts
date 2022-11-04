@@ -1,25 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { ActivationEnd, Router } from '@angular/router';
 import { map,Subscription, filter } from 'rxjs';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnDestroy {
   showBar = true;
   watcher!: Subscription;
   isMobile = false;
-
   expandedIndex = 0;
+  routeTree:string='Solicitud tarjetas';
+  @ViewChild('drawer') drawer!: any;
 
-  constructor(private mediaObserver: MediaObserver) {
+
+  constructor(private mediaObserver: MediaObserver,private dbService: DashboardService) {
     this.initializeWatcher();
+  }
+  ngOnDestroy(): void {
+    this.watcher && this.watcher.unsubscribe();
   }
 
   changeShowBar() {
     this.showBar = !this.showBar;
+  }
+
+  MenuSelected(route:string){
+    this.routeTree=route;
   }
 
   initializeWatcher(): void {
@@ -49,4 +60,14 @@ export class DashboardComponent {
         }
       });
   }
+
+  drawerChange() {
+    this.drawer.toggle();
+    this.dbService.drawerOpen.next(this.drawer.opened);
+  }
+
+
+
+
+
 }

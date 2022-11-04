@@ -16,7 +16,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
-
+import {MatSortModule} from '@angular/material/sort';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   exports:[
     MatCardModule,
@@ -28,6 +29,8 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
     MatSidenavModule,
     MatToolbarModule,
     MatNativeDateModule,
+    MatSortModule,
+    MatDividerModule,
     MatListModule,
     MatSelectModule,
     MatDatepickerModule,

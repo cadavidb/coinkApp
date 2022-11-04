@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { itemsMenuDashboard } from '../../utils/items-menu.utils';
 
 @Component({
   selector: 'app-list-items',
@@ -6,20 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-items.component.scss'],
 })
 export class ListItemsComponent implements OnInit {
-  menus = [
-    {
-      name: 'Tarjetas Visa en dispensadores',
-      items: [
-        { name: 'Crear Dispensador', url: '/dashboard/create-dispenser' },
-        {
-          name: 'Monitorear y editar dispensadores',
-          url: '/dashboard/list-dispensers',
-        },
-        { name: 'Solicitud tarjetas', url: '/dashboard/create-card' },
-      ],
-    },
-  ];
+  @Output() OnMenuSelected: EventEmitter<string> = new EventEmitter();
+  menus = itemsMenuDashboard;
   constructor() {}
 
   ngOnInit(): void {}
+
+  selectedMenu(menu: string) {
+    this.OnMenuSelected.emit(menu);
+  }
 }

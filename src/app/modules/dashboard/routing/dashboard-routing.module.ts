@@ -10,7 +10,8 @@ const routes: Routes = [
     children: [
       {
         path:'request-card',
-        component: RequestCardComponent
+        component: RequestCardComponent,
+        data: { location: 'Solicitud de tarjetas' },
       },
 
       {
